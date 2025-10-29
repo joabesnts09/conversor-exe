@@ -26,13 +26,33 @@ python --version
 REM Verificar se pip está instalado
 pip --version >nul 2>&1
 if errorlevel 1 (
-    echo ❌ pip não encontrado! Reinstale Python com pip.
-    pause
-    exit /b 1
+    echo ⚠️ pip não encontrado no PATH. Tentando instalar ou corrigir o PATH...
+    
+    REM Tentar instalar/garantir o pip usando o ensurepip
+    python -m ensurepip --default-pip >nul 2>&1
+    
+    REM Tentar novamente verificar se pip está instalado
+    pip --version >nul 2>&1
+    if errorlevel 1 (
+        echo ❌ Falha ao instalar o pip!
+        echo.
+        echo 💡 Solução: Reinstale o Python 3.12.7 e GARANTA que a opção "Add Python to PATH"
+        echo    esteja marcada durante a instalação.
+        echo    Apos a reinstalacao, execute este script novamente.
+        echo.
+        pause
+        exit /b 1
+    )
+    
+    REM Se o ensurepip funcionou, o pip deve estar no PATH (pelo menos na pasta Scripts do Python)
+    echo ✅ pip instalado/encontrado!
 )
 
 echo ✅ pip encontrado:
 pip --version
+
+REM O RESTANTE DO SCRIPT ABAIXO É O MESMO
+REM ---
 
 REM Atualizar pip
 echo.
@@ -64,7 +84,7 @@ try:
     import tkinterdnd2
     print('✅ TkinterDnD2: OK')
 except ImportError as e:
-    print(f'❌ TkinterDnD2: {e}')
+    print('❌ TkinterDnD2: {e}')
 
 try:
     import pandas
@@ -136,5 +156,3 @@ echo    3. Para gerar executável: build_executable.bat
 echo.
 echo 🎉 Conversor Financeiro está pronto para Windows!
 pause
-
-
