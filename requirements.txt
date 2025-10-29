@@ -1,0 +1,43 @@
+# Dependências essenciais do Conversor Financeiro
+# Instalar com: pip install -r requirements.txt
+
+# Interface gráfica moderna
+customtkinter==5.2.2
+tkinterdnd2==0.4.3
+
+# Manipulação de dados
+pandas==2.1.4
+numpy==1.26.4
+
+# Excel
+openpyxl==3.1.2
+
+# PDF
+pdfminer.six==20221105
+pypdfium2==4.30.0
+
+# Imagens
+pillow==10.2.0
+
+# Data/hora
+python-dateutil==2.8.2
+pytz==2024.1
+
+# Criptografia
+cryptography==41.0.7
+bcrypt==3.2.2
+
+# HTTP/Requests
+requests==2.31.0
+urllib3==2.0.7
+certifi==2023.11.17
+charset-normalizer==3.4.3
+idna==3.6
+
+# Utilitários
+six==1.16.0
+packaging==25.0
+
+# Executável (opcional)
+pyinstaller==6.3.0
+pyinstaller-hooks-contrib==2025.9
